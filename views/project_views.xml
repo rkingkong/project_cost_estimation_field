@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Inject after the Categories (tag_ids) on the project form -->
+  <record id="view_project_form_inherit_estimated_cost_gtq" model="ir.ui.view">
+    <field name="name">project.project.form.estimated.cost.gtq</field>
+    <field name="model">project.project</field>
+    <!-- Odoo 16 CE project form view external id -->
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="arch" type="xml">
+      <!-- Put it right after the categories/tags -->
+      <xpath expr="//field[@name='tag_ids']" position="after">
+        <!-- Keep currency hidden, but editable if someone really needs to change it later -->
+        <field name="project_currency_id" invisible="1"/>
+        <field name="estimated_cost"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
